@@ -666,3 +666,7 @@ video {
   font-size: 3rem;
   line-height: 1;
 }
+
+.text-opacity-0 {
+  --tw-text-opacity: 0;
+}
