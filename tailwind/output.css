@@ -625,6 +625,10 @@ video {
   cursor: pointer;
 }
 
+.cursor-not-allowed {
+  cursor: not-allowed;
+}
+
 .grid-cols-cards {
   grid-template-columns: repeat(auto-fill, minmax(208px, 1fr));
 }
