@@ -12,35 +12,56 @@ Array.from(cardContainer.children).forEach(card => {
       if (!card.classList.contains('cursor-not-allowed')){
         if (previousCard === undefined){
           previousCard = card.dataset.card
+          card.querySelector('.card-img').classList.remove('hidden')
           card.classList.add('cursor-not-allowed')
           console.log(previousCard)
         }
         else {
           let currentCard = card.dataset.card
           if (currentCard == previousCard){
-            alert("Matching Pair, well done!")
+            card.querySelector('.card-img').classList.remove('hidden')
+            setTimeout(() => {
+              alert("Matching Pair, well done!")
+              previousCard = undefined
+              if (successCount === cardContainer.children.length /2){
+                alert("Congratulations! You matched all the cards!")
+              }
+            }, 0); 
             Array.from(document.querySelectorAll(`[data-card="${currentCard}"]`)).forEach(card => {
               card.classList.add('cursor-not-allowed')
             })
             successCount += 1
-              if (successCount === cardContainer.children.length /2){
-                alert("Congratulations! You matched all the cards!")
-              }
           }
           else{
-            alert("Not a match")
+            let canHideImg;
+            card.querySelector('.card-img').classList.remove('hidden')
             failureCount += 1
+            setTimeout(() => {
+              card.querySelector('.card-img').classList.add('hidden')
+              alert("not a match")
+              canHideImg = true
+              if (canHideImg){
+                console.log('this is runnign')
+                Array.from(cardContainer.querySelectorAll(`[data-card="${previousCard}"]`)).forEach(card => {
+                  Array.from(card.children).forEach(img => {
+                    img.classList.add('hidden')
+                    previousCard = undefined
+                  })
+                })
+
+              }
+            }, 0);
             Array.from(document.querySelectorAll(`[data-card="${previousCard}"]`)).forEach(card => {
               card.classList.remove('cursor-not-allowed')
             })
+            
+            
           }
-          previousCard = undefined
           currentCard = undefined
         }
         console.log(successCount)
-
       }
-      }
-      )
-
+      })
 })
+
+
