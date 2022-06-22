@@ -3,5 +3,5 @@
 @tailwind utilities;
 
 .card{
-  @apply flex justify-center items-center w-52 h-52 bg-slate-300 rounded-lg cursor-pointer
+  @apply flex justify-center items-center w-52 h-52 bg-[#77a8e3] rounded-lg cursor-pointer mx-auto overflow-hidden
 }
